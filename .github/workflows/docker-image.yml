@@ -17,4 +17,6 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag opscentre/firebird-ubuntu-chiselled:latest
     - name: Push image to Docker Hub
-      run: docker push opscentre/firebird-ubuntu-chiselled:latest
+      run: |
+        docker login -u opscentre -p ${{secrets.DOCKER_HUB_TOKEN}}
+        docker push opscentre/firebird-ubuntu-chiselled:latest
